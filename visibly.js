@@ -51,15 +51,15 @@
             try { /*if no native page visibility support found..*/
                 if (!(this.isSupported())) {
                     if (this.q.addEventListener) { /*for browsers without focusin/out support eg. firefox, opera use focus/blur*/
-		console.log('here');
+                        console.log('here');
                         window.addEventListener(this.m[0], this._visible, 1);
                         window.addEventListener(this.m[1], this._hidden, 1);
 
                     } else { /*IE <10s most reliable focus events are onfocusin/onfocusout*/
-						if(this.q.attachEvent){
-                        	this.q.attachEvent('onfocusin', this._visible);
-                        	this.q.attachEvent('onfocusout', this._hidden);
-						}
+                        if (this.q.attachEvent) {
+                            this.q.attachEvent('onfocusin', this._visible);
+                            this.q.attachEvent('onfocusout', this._hidden);
+                        }
                     }
                 } else { /*switch support based on prefix*/
                     this.b = this.prefixes[+(this._supports(0) == this.p)];
@@ -76,4 +76,3 @@
 
     this.visibly.init();
 })();
-
