@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>visibly</title>
+	<script type="text/javascript" src="visibly.js"></script>
+	<script type="text/javascript">
+	visibly.onVisible(function () {
+	    console.log('page is visible');
+	});
+
+	visibly.onHidden(function () {
+	    console.log('page is hidden');
+	});
+
+	visibly.onVisible(function (){
+	    document.title = 'visible';
+	});
+
+	visibly.onHidden(function (){
+	    document.title = 'hidden';
+	});	
+	</script>
+</head>
+<body>
+<p>
+This is a very basic test page demonstrating <strong>visibly</strong> in action. If you create a new tab or click outside the main browser application window, you should see the title of the document change.
+</p>
+</body>
+</html>
