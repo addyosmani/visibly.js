@@ -11,7 +11,7 @@ This polyfill wraps around the Page Visibility API defined by the W3C. Native su
 
 `visibly.onVisible(callback)` allows you to trigger a callback when a page switches from a hidden state to a visible state. Similarly `visibly.onHidden(callback)` performs the converse.
 
-Here is an example where both the document title will be altered based on the page state and a message will be logged to the browser's console based on the same.
+The following is an example where both the document title will be altered based on the page state and a message will be logged to the browser's console based on the same.
 
 ```js
 visibly.onVisible(function () {
