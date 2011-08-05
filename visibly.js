@@ -28,7 +28,7 @@
         _supports: function (index) {
             return ((this.prefixes[index] + this.props[2]) in this.q);
         },
-        runCallbacks: function (index) {
+        _execute: function (index) {
             if (index) {
                 this._callbacks = (index == 1) ? this.visibleCallbacks : this.hiddenCallbacks;
                 for (var i = 0; i < this._callbacks.length; i++) {
@@ -37,24 +37,22 @@
             }
         },
         _visible: function () {
-            window.visibly.runCallbacks(1);
+            window.visibly._execute(1);
         },
         _hidden: function () {
-            window.visibly.runCallbacks(2);
+            window.visibly._execute(2);
         },
         _nativeSwitch: function () {
             var isHidden = this.q[this.b + this.props[2]];
             this[isHidden ? '_hidden' : '_visible']();
         },
-        listen: function () {
+        _listen: function () {
 
             try { /*if no native page visibility support found..*/
                 if (!(this.isSupported())) {
                     if (this.q.addEventListener) { /*for browsers without focusin/out support eg. firefox, opera use focus/blur*/
-                        console.log('here');
                         window.addEventListener(this.m[0], this._visible, 1);
                         window.addEventListener(this.m[1], this._hidden, 1);
-
                     } else { /*IE <10s most reliable focus events are onfocusin/onfocusout*/
                         if (this.q.attachEvent) {
                             this.q.attachEvent('onfocusin', this._visible);
@@ -70,7 +68,7 @@
             } catch (e) {}
         },
         init: function () {
-            this.listen();
+            this._listen();
         }
     };
 
