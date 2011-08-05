@@ -1,8 +1,8 @@
 # visibly.js - a polyfill for the Page Visibility API
 
-visibly lets you easily establish whether a page currently being viewed in the browser is visible to the user or has been hidden by them switching to another tab. Creating user experiences around page visibility detection allows you to improve performance by doing things like stopping data-streams/AJAX requests from being pulled while they aren't in the current tab. You can also do things like pause videos until the user returns and so on.
+visibly lets you easily establish whether a page currently being viewed in the browser is visible to the user or has been hidden by them switching to another tab. Creating user experiences around page visibility detection allows one to improve performance by opting to do things such as stopping data-streams/AJAX requests from being pulled should they decide to switch tabs. Creative users such as pausing video streams until a user returns to a tab, changing content depending on their tab behaviour or even saving interim versions of content being written in the browser (such as with GMail) are also possibly use-cases.
 
-This polyfill wraps around the Page Visibility API defined by the W3C. Native support for the API can be found in Google Chrome 13+ and IE10PP, however if the feature is not natively supported this polyfill will provide the same functionality using the window/document focus and blur variations supported by the user's browser.
+The visibly polyfill wraps around the Page Visibility API defined by the W3C. Native support for the API can be found in Google Chrome 13+ and IE10PP, however if the feature is not natively supported this polyfill will provide the same functionality using the window/document focus and blur variations supported by the user's browser. My intention is to update the polyfill as per necessary as more browsers adopt the standard.
 
 
 ##Usage examples
