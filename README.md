@@ -1,6 +1,8 @@
 # visibly.js - a polyfill for the Page Visibility API
 
-visibly lets you easily establish whether a page currently being viewed in the browser is visible to the user or has been hidden by them switching to another tab. Creating user experiences around page visibility detection allows one to improve performance by opting to do things such as stopping data-streams/AJAX requests from being pulled should they decide to switch tabs. Creative users such as pausing video streams until a user returns to a tab, changing content depending on their tab behaviour or even saving interim versions of content being written in the browser (such as with GMail) are also possibly use-cases.
+visibly lets you easily establish whether a page currently being viewed in the browser is visible to the user or has been hidden by them switching to another tab. 
+
+Creating user experiences around page visibility detection allows one to improve performance by opting to do things such as stopping data-streams/AJAX requests from being pulled should they decide to switch tabs. Data-flow can then be resumed when a user tabs back with very little visible cost to the experience. Creative uses such as pausing video streams until a user returns, changing content depending on their tab behaviour or even saving interim versions of content being written in the browser (such as with GMail) are also possibly use-cases.
 
 The visibly polyfill wraps around the Page Visibility API defined by the W3C. Native support for the API can be found in Google Chrome 13+ and IE10PP, however if the feature is not natively supported this polyfill will provide the same functionality using the window/document focus and blur variations supported by the user's browser. My intention is to update the polyfill as per necessary as more browsers adopt the standard.
 
@@ -48,3 +50,7 @@ visibly is approx. 1.35KB (minified) and has been tested with Google Chrome 12, 
 ## Coming soon
 
 I intend on adding Jasmine tests to the repo once I've stabilised how I would like the internal visibly API to be structured. It's very close to final at the moment, however there is some further optimization that can be done.
+
+## Alternatives
+
+An alternative to the visibly polyfill is visibility.js. This solution offers a similar set of features but for an additional 1.5KB you are also able to get time-related features should you need them. For more on this solution see: https://github.com/evilmartians/visibility.js
