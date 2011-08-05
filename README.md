@@ -41,6 +41,10 @@ if( visibly.isSupported() ) {
 }
 ```
 
+## Compatibility
+
+visibly has been tested with Google Chrome 12, 13 (beta), 14 (nightly), Opera 9.5, Firefox 5.0, Firefox 4.0, Internet Explorer 8.0, 9.0 and 10PP2. I don't currently have the ability to test IE7 accurately, however I'll make a note regarding compatibility once it's been established.  
+
 ## Coming soon
 
 I intend on adding Jasmine tests to the repo once I've stabilised how I would like the internal visibly API to be structured. It's very close to final at the moment, however there is some further optimization that can be done.
