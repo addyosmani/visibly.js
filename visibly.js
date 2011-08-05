@@ -1,5 +1,6 @@
 /*!
  * visibly - v0.5.5 Aug 2011 - Page Visibility API Polyfill
+ * http://github.com/addyosmani
  * Copyright (c) 2011 Addy Osmani
  * Dual licensed under the MIT and GPL licenses.
  */
@@ -47,7 +48,6 @@
             this[isHidden ? '_hidden' : '_visible']();
         },
         _listen: function () {
-
             try { /*if no native page visibility support found..*/
                 if (!(this.isSupported())) {
                     if (this.q.addEventListener) { /*for browsers without focusin/out support eg. firefox, opera use focus/blur*/
