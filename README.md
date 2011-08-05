@@ -41,6 +41,6 @@ if( visibly.isSupported() ) {
 }
 ```
 
-## What's yet to come?
+## Coming soon
 
 I intend on adding Jasmine tests to the repo once I've stabilised how I would like the internal visibly API to be structured. It's very close to final at the moment, however there is some further optimization that can be done.
