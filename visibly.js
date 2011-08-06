@@ -4,7 +4,7 @@
  * Copyright (c) 2011 Addy Osmani
  * Dual licensed under the MIT and GPL licenses.
  */
-(function () {
+;(function () {
 
     window.visibly = {
         b: null,
@@ -16,6 +16,9 @@
         visibleCallbacks: [],
         hiddenCallbacks: [],
         _callbacks: [],
+        cachedPrefix:"",
+        hidden:false, //should get updated on visibiltystatechange
+        visibilitystate:null,//should also get updated.
 
         onVisible: function (_callback) {
             this.visibleCallbacks.push(_callback);
@@ -26,8 +29,31 @@
         isSupported: function () {
             return (this._supports(0) || this._supports(1));
         },
+        _getPrefix:function(){
+            if(! this.cachedPrefix){
+                for(var i=0; i<this.prefixes.length;i++){
+                    if(this.prefixes[i]){
+                        this.cachedPrefix =  this.prefixes[i];
+                        return this.cachedPrefix;
+                    }
+                }    
+             }
+        },
+
+        visibilityState:function(){
+            return  this._propTest(0);
+        },
+        hidden:function(){
+            return this._propTest(2);
+        },
+        visibilitychange:function(){
+          //todo  
+        },
         _supports: function (index) {
             return ((this.prefixes[index] + this.props[2]) in this.q);
+        },
+        _propTest:function(index){
+            return document[this.cachedPrefix + this.props[index]]; 
         },
         _execute: function (index) {
             if (index) {
@@ -68,6 +94,7 @@
             } catch (e) {}
         },
         init: function () {
+            this._getPrefix();
             this._listen();
         }
     };
