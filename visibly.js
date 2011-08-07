@@ -7,7 +7,6 @@
 ;(function () {
 
     window.visibly = {
-        b: null,
         q: document,
         p: undefined,
         prefixes: ['webkit', 'ms'],
@@ -17,8 +16,6 @@
         hiddenCallbacks: [],
         _callbacks: [],
         cachedPrefix:"",
-        hidden:false, //should get updated on visibiltystatechange
-        visibilitystate:null,//should also get updated.
 
         onVisible: function (_callback) {
             this.visibleCallbacks.push(_callback);
@@ -26,11 +23,8 @@
         onHidden: function (_callback) {
             this.hiddenCallbacks.push(_callback);
         },
-        isSupported: function () {
-            return (this._supports(0) || this._supports(1));
-        },
         _getPrefix:function(){
-            if(! this.cachedPrefix){
+            if(!this.cachedPrefix){
                 for(var i=0; i<this.prefixes.length;i++){
                     if(this.prefixes[i]){
                         this.cachedPrefix =  this.prefixes[i];
@@ -47,10 +41,10 @@
             return this._propTest(2);
         },
         visibilitychange:function(){
-          //todo  
+
         },
-        _supports: function (index) {
-            return ((this.prefixes[index] + this.props[2]) in this.q);
+        isSupported: function (index) {
+            return ((this.cachedPrefix + this.props[2]) in this.q);
         },
         _propTest:function(index){
             return document[this.cachedPrefix + this.props[index]]; 
@@ -70,8 +64,7 @@
             window.visibly._execute(2);
         },
         _nativeSwitch: function () {
-            var isHidden = this.q[this.b + this.props[2]];
-            this[isHidden ? '_hidden' : '_visible']();
+            this[this._propTest(2) ? '_hidden' : '_visible']();
         },
         _listen: function () {
             try { /*if no native page visibility support found..*/
@@ -86,8 +79,7 @@
                         }
                     }
                 } else { /*switch support based on prefix*/
-                    this.b = this.prefixes[+(this._supports(0) == this.p)];
-                    this.q.addEventListener(this.b + this.props[1], function () {
+                    this.q.addEventListener(this.cachedPrefix + this.props[1], function () {
                         window.visibly._nativeSwitch.apply(window.visibly, arguments);
                     }, 1);
                 }
