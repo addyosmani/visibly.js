@@ -28,10 +28,14 @@
         fn:null,
 
         onVisible: function (_callback) {
-            this.visibleCallbacks.push(_callback);
+            if(typeof fn == 'function' ){
+                this.visibleCallbacks.push(_callback);
+            }
         },
         onHidden: function (_callback) {
-            this.hiddenCallbacks.push(_callback);
+            if(typeof fn == 'function' ){
+                this.hiddenCallbacks.push(_callback);
+            }
         },
         getPrefix:function(){
             if(!this.cachedPrefix){
