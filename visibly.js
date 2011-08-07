@@ -3,7 +3,15 @@
  * http://github.com/addyosmani
  * Copyright (c) 2011 Addy Osmani
  * Dual licensed under the MIT and GPL licenses.
+ *
+ * Methods supported:
+ * visibly.onVisible(callback)
+ * visibly.onHidden(callback)
+ * visibly.getPrefix()
+ * visibly.hidden()
+ * visibly.visibilityState()
  */
+
 ;(function () {
 
     window.visibly = {
@@ -23,11 +31,11 @@
         onHidden: function (_callback) {
             this.hiddenCallbacks.push(_callback);
         },
-        _getPrefix:function(){
+        getPrefix:function(){
             if(!this.cachedPrefix){
-                for(var i=0; i<this.prefixes.length;i++){
-                    if(this.prefixes[i]){
-                        this.cachedPrefix =  this.prefixes[i];
+                for(l=0;b=this.prefixes[l++];){
+                    if(b + this.props[2] in this.q){
+                        this.cachedPrefix =  b;
                         return this.cachedPrefix;
                     }
                 }    
@@ -35,25 +43,29 @@
         },
 
         visibilityState:function(){
-            return  this._propTest(0);
+            return  this._getProp(0);
         },
         hidden:function(){
-            return this._propTest(2);
+            return this._getProp(2);
         },
-        visibilitychange:function(){
-
+        visibilitychange:function(state){
+            var test = 'boo';
+            return function(boo){
+                console.log('inside');
+            }
         },
         isSupported: function (index) {
             return ((this.cachedPrefix + this.props[2]) in this.q);
         },
-        _propTest:function(index){
-            return document[this.cachedPrefix + this.props[index]]; 
+        _getProp:function(index){
+            return this.q[this.cachedPrefix + this.props[index]]; 
         },
         _execute: function (index) {
             if (index) {
                 this._callbacks = (index == 1) ? this.visibleCallbacks : this.hiddenCallbacks;
-                for (var i = 0; i < this._callbacks.length; i++) {
-                    this._callbacks[i]();
+                var n =  this._callbacks.length;
+                while(n--){
+                    this._callbacks[n]();
                 }
             }
         },
@@ -64,7 +76,7 @@
             window.visibly._execute(2);
         },
         _nativeSwitch: function () {
-            this[this._propTest(2) ? '_hidden' : '_visible']();
+            this[this._getProp(2) ? '_hidden' : '_visible']();
         },
         _listen: function () {
             try { /*if no native page visibility support found..*/
@@ -78,7 +90,7 @@
                             this.q.attachEvent('onfocusout', this._hidden);
                         }
                     }
-                } else { /*switch support based on prefix*/
+                } else { /*switch support based on prefix detected earlier*/
                     this.q.addEventListener(this.cachedPrefix + this.props[1], function () {
                         window.visibly._nativeSwitch.apply(window.visibly, arguments);
                     }, 1);
@@ -86,7 +98,7 @@
             } catch (e) {}
         },
         init: function () {
-            this._getPrefix();
+            this.getPrefix();
             this._listen();
         }
     };
