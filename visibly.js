@@ -1,5 +1,5 @@
 /*!
- * visibly - v0.5.5 Aug 2011 - Page Visibility API Polyfill
+ * visibly - v0.6 Aug 2011 - Page Visibility API Polyfill
  * http://github.com/addyosmani
  * Copyright (c) 2011 Addy Osmani
  * Dual licensed under the MIT and GPL licenses.
@@ -7,7 +7,6 @@
  * Methods supported:
  * visibly.onVisible(callback)
  * visibly.onHidden(callback)
- * visibly.getPrefix()
  * visibly.hidden()
  * visibly.visibilityState()
  */
@@ -17,13 +16,14 @@
     window.visibly = {
         q: document,
         p: undefined,
-        prefixes: ['webkit', 'ms'],
+        prefixes: ['webkit', 'ms','o','moz','khtml'],
         props: ['VisibilityState', 'visibilitychange', 'Hidden'],
         m: ['focus', 'blur'],
         visibleCallbacks: [],
         hiddenCallbacks: [],
         _callbacks: [],
         cachedPrefix:"",
+        fn:null,
 
         onVisible: function (_callback) {
             this.visibleCallbacks.push(_callback);
@@ -48,11 +48,19 @@
         hidden:function(){
             return this._getProp(2);
         },
-        visibilitychange:function(state){
-            var test = 'boo';
-            return function(boo){
-                console.log('inside');
+        visibilitychange:function(fn){
+            if(typeof fn == 'function' ){
+                this.fn =  fn;
             }
+            if(this.fn){
+                if(this.cachedPrefix){
+                    this.fn.call(this, this.visibilityState());
+                }else{
+                    this.fn.call(this, arguments[0]);
+                }
+                
+            }
+
         },
         isSupported: function (index) {
             return ((this.cachedPrefix + this.props[2]) in this.q);
@@ -71,9 +79,11 @@
         },
         _visible: function () {
             window.visibly._execute(1);
+            window.visibly.visibilitychange.call(window.visibly, 'visible');
         },
         _hidden: function () {
             window.visibly._execute(2);
+            window.visibly.visibilitychange.call(window.visibly, 'hidden');
         },
         _nativeSwitch: function () {
             this[this._getProp(2) ? '_hidden' : '_visible']();

@@ -6,7 +6,6 @@
 	<script type="text/javascript">
 	visibly.onVisible(function () {
 	    console.log('page is visible');
-	    console.log(visibly.visibilityState());
 	});
 
 	visibly.onHidden(function () {
@@ -21,8 +20,8 @@
 	    document.title = 'hidden';
 	});	
 
-	visibly.visibilitychange(function(o){
-		console.log('visibilitychange' + o);
+	visibly.visibilitychange(function(state){
+		console.log('Page visibility state is:' + state);
 	});
 	</script>
 </head>
