@@ -9,6 +9,7 @@
  * visibly.onHidden(callback)
  * visibly.hidden()
  * visibly.visibilityState()
+ * visibly.visibilitychange(callback(state));
  */
 
 ;(function () {
@@ -21,6 +22,7 @@
         m: ['focus', 'blur'],
         visibleCallbacks: [],
         hiddenCallbacks: [],
+        genericCallbacks:[],
         _callbacks: [],
         cachedPrefix:"",
         fn:null,
@@ -50,15 +52,20 @@
         },
         visibilitychange:function(fn){
             if(typeof fn == 'function' ){
-                this.fn =  fn;
+                this.genericCallbacks.push(fn);
             }
-            if(this.fn){
+
+            var n =  this.genericCallbacks.length;
+            if(n){
                 if(this.cachedPrefix){
-                    this.fn.call(this, this.visibilityState());
+                     while(n--){
+                        this.genericCallbacks[n].call(this, this.visibilityState());
+                    }
                 }else{
-                    this.fn.call(this, arguments[0]);
+                    while(n--){
+                        this.genericCallbacks[n].call(this, arguments[0]);
+                    }
                 }
-                
             }
 
         },
