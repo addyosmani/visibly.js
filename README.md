@@ -62,7 +62,7 @@ if( visibly.isSupported() ) {
 
 ## Compatibility & Size
 
-visibly is approx. 1.35KB (minified) and has been tested with Google Chrome 12, 13 (beta), 14 (nightly), Opera 9.5, Firefox 5.0, Firefox 4.0, Internet Explorer 8.0, 9.0 and 10PP2. I don't currently have the ability to test IE7 accurately, however I'll make a note regarding compatibility once it's been established.  
+visibly is approx. 2021 bytes (minified) and has been tested with Google Chrome 12, 13 (beta), 14 (nightly), Opera 9.5, Firefox 5.0, Firefox 4.0, Internet Explorer 8.0, 9.0 and 10PP2. I don't currently have the ability to test IE7 accurately, however I'll make a note regarding compatibility once it's been established.  
 
 ## Coming soon
 
