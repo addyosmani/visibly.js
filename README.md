@@ -9,6 +9,23 @@ The visibly polyfill wraps around the Page Visibility API defined by the W3C. Na
 
 ##Usage examples
 
+###Polyfilled methods based on the official specifications
+
+```js
+//visibilityChange()
+visibly.visibilitychange(function(state){
+	console.log('The current visibility state is:' + state);
+});
+
+//hidden()
+if(visibly.hidden()){
+	console.log('the current page is hidden')
+}
+
+//visibilityState()
+console.log('The current visibility state is:' + visibly.visibilityState());
+```
+
 ### Performing an action when the page is visible or hidden
 
 `visibly.onVisible(callback)` allows you to trigger a callback when a page switches from a hidden state to a visible state. Similarly `visibly.onHidden(callback)` performs the converse.
