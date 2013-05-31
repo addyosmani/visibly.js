@@ -39,7 +39,7 @@
         },
         getPrefix:function(){
             if(!this.cachedPrefix){
-                for(l=0;b=this.prefixes[l++];){
+                for(var l=0;b=this.prefixes[l++];){
                     if(b + this.props[2] in this.q){
                         this.cachedPrefix =  b;
                         return this.cachedPrefix;
