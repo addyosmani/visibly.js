@@ -28,12 +28,12 @@
         fn:null,
 
         onVisible: function (_callback) {
-            if(typeof fn == 'function' ){
+            if(typeof _callback == 'function' ){
                 this.visibleCallbacks.push(_callback);
             }
         },
         onHidden: function (_callback) {
-            if(typeof fn == 'function' ){
+            if(typeof _callback == 'function' ){
                 this.hiddenCallbacks.push(_callback);
             }
         },
