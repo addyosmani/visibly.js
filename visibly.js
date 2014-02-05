@@ -74,10 +74,13 @@
 
         },
         isSupported: function (index) {
-            return ((this.cachedPrefix + this.props[2]) in this.q);
+            return ((this._getPropName(2)) in this.q);
+        },
+        _getPropName:function(index) {
+            return (this.cachedPrefix == "" ? this.props[index].substring(0, 1).toLowerCase() + this.props[index].substring(1) : this.cachedPrefix + this.props[index]);
         },
         _getProp:function(index){
-            return this.q[this.cachedPrefix + this.props[index]]; 
+            return this.q[this._getPropName(index)]; 
         },
         _execute: function (index) {
             if (index) {
@@ -112,7 +115,7 @@
                         }
                     }
                 } else { /*switch support based on prefix detected earlier*/
-                    this.q.addEventListener(this.cachedPrefix + this.props[1], function () {
+                    this.q.addEventListener(this._getPropName(1), function () {
                         window.visibly._nativeSwitch.apply(window.visibly, arguments);
                     }, 1);
                 }
