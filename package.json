@@ -1,0 +1,25 @@
+{
+  "name": "visibly.js",
+  "version": "0.1.0",
+  "description": "A cross-browser Page Visibility API shim",
+  "main": "visibly.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/addyosmani/visibly.js"
+  },
+  "keywords": [
+    "visibility",
+    "page-visibility",
+    "shim"
+  ],
+ "author": {
+    "name": "Addy Osmani",
+    "email": "addyosmani@gmail.com",
+    "url": "addyosmani.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/addyosmani/visibly.js/issues"
+  },
+  "homepage": "https://github.com/addyosmani/visibly.js"
+}
