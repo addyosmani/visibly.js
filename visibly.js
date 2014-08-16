@@ -1,7 +1,7 @@
 /*!
- * visibly - v0.6 Aug 2011 - Page Visibility API Polyfill
+ * visibly - v0.7 Page Visibility API Polyfill
  * http://github.com/addyosmani
- * Copyright (c) 2011 Addy Osmani
+ * Copyright (c) 2011-2014 Addy Osmani
  * Dual licensed under the MIT and GPL licenses.
  *
  * Methods supported:
