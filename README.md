@@ -1,4 +1,6 @@
-# visibly.js - a polyfill for the Page Visibility API
+# visibly.js
+
+> A shim for the Page Visibility API
 
 visibly lets you easily establish whether a page currently being viewed in the browser is visible to the user or has been hidden by them switching to another tab. 
 
