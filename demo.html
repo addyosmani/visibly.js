@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visibly.js shim demo</title>
+	<script src="visibly.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		visibly.onVisible(function () {
+		    console.log('page is visible');
+		});
+
+		visibly.onHidden(function () {
+		    console.log('page is hidden');
+		});
+
+		visibly.onVisible(function (){
+		    document.title = 'visible';
+		});
+
+		visibly.onHidden(function (){
+		    document.title = 'hidden';
+		});	
+
+		visibly.visibilitychange(function(state){
+			console.log('Page visibility state is:' + state);
+		});
+
+		visibly.visibilitychange(function(state){
+			console.log('My visibility is:' + state);
+		});
+	</script>
+	<p>
+	This is a very basic test page demonstrating <strong>visibly</strong> in action. If you create a new tab or click outside the main browser application window, you should see the title of the document change.
+	</p>
+</body>
+</html>
