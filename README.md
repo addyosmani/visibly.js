@@ -76,4 +76,4 @@ visibly is approx. 2K (minified) and has been tested with all Chrome release cha
 
 ## Alternatives
 
-An alternative to the visibly polyfill is visibility.js. This solution offers a similar set of features but for an additional 1.5KB you are also able to get time-related features should you need them. For more on this solution see: https://github.com/evilmartians/visibility.js
+An alternative to the visibly polyfill is visibility.js. This solution offers a similar set of features but for an additional 1.5KB you are also able to get time-related features should you need them. For more on this solution see: https://github.com/ai/visibilityjs
