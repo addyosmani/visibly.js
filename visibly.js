@@ -39,12 +39,12 @@
         },
         getPrefix:function(){
             if(!this.cachedPrefix){
-                for(var l=0;b=this.prefixes[l++];){
+                for(var l=0,b;b=this.prefixes[l++];){
                     if(b + this.props[2] in this.q){
                         this.cachedPrefix =  b;
                         return this.cachedPrefix;
                     }
-                }    
+                }
              }
         },
 
@@ -80,7 +80,7 @@
             return (this.cachedPrefix == "" ? this.props[index].substring(0, 1).toLowerCase() + this.props[index].substring(1) : this.cachedPrefix + this.props[index]);
         },
         _getProp:function(index){
-            return this.q[this._getPropName(index)]; 
+            return this.q[this._getPropName(index)];
         },
         _execute: function (index) {
             if (index) {
